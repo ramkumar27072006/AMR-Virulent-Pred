@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AMR Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='amr.css') }}">
+</head>
+<body>
+    <div class="amr-container">
+        <div class="input-box">
+            <h2>AMR Prediction</h2>
+
+            <form action="{{ url_for('amr_result') }}" method="post">
+                <textarea name="sequence" rows="6" placeholder="Enter DNA sequence..." required></textarea>
+                <button type="submit">Predict</button>
+            </form>
+            
+
+            {% if result %}     
+                <div style="margin-top: 20px; font-size: 18px; color: #111;">
+                    {{ result }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="image-box">
+            <img src="{{ url_for('static', filename='images/Image-empty-state.jpeg') }}" alt="DNA Image">
+        </div>
+    </div>  
+</body>
+</html>
